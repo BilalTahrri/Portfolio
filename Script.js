@@ -14,21 +14,44 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 const text = document.querySelectorAll(".sec-text");
 
-const textload = () =>{
-    setTimeout(() => {
-        text.textcontent = "web developer"
 
-    },0);
+const textload = () => {
     setTimeout(() => {
-        text.textcontent = "Blogger"
-
-    },4000);
+        text.textContent = "web developer";
+    }, 0);
     setTimeout(() => {
-        text.textcontent = "Youtuber"
-
-    },8000);
+        text.textContent = "UX";
+    }, 4000);
+    setTimeout(() => {
+        text.textContent = "UI";
+    }, 8000);
 }
-textload()
+textload();
+
+
+const header = document.querySelector("header");
+window.addEventListener("scroll", function () {
+    header.classList.toggle("sticky", window.scrollY > 100);
+});
+
+let menu = document.querySelector('#menu-icon');
+let navlist = document.querySelector('.navlist');
+
+function toggleMenu() {
+    menu.classList.toggle('bx-x');
+    navlist.classList.toggle('open');
+}
+
+menu.onclick = toggleMenu;
+
+window.onclick = (event) => {
+    if (!event.target.matches('#menu-icon')) {
+        menu.classList.remove('bx-x');
+        navlist.classList.remove('open');
+    }
+};
+
+
 
 
 
